@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Handshake Autoclaim",
+  "version": "1.0.0",
+  "description": "Auto-clicks a bound button (e.g. \"Start task\") on ai.joinhandshake.com at irregular intervals, and keeps going while the window is unfocused.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://ai.joinhandshake.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://ai.joinhandshake.com/fellow/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Handshake Autoclaim</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="icons/icon48.png" alt="" width="22" height="22" />
+      <h1>Handshake Autoclaim</h1>
+    </header>
+
+    <div id="wrongPage" class="notice hidden">
+      Open <strong>ai.joinhandshake.com/fellow/projects</strong> in this tab to use the
+      extension.
+    </div>
+
+    <div id="mainPanel">
+      <section class="row toggle-row">
+        <div>
+          <div class="label">Auto-click</div>
+          <div class="sublabel" id="statusText">Disabled</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="enabledToggle" />
+          <span class="slider"></span>
+        </label>
+      </section>
+
+      <section class="card" id="boundCard">
+        <div class="card-title">Bound button</div>
+        <div id="boundEmpty" class="hidden">
+          <p class="muted">No button bound yet.</p>
+        </div>
+        <div id="boundFilled" class="hidden">
+          <div class="bound-text" id="boundTextEl"></div>
+          <div class="bound-context" id="boundContextEl"></div>
+        </div>
+        <div class="button-row">
+          <button id="bindBtn" class="btn btn-primary">Bind button</button>
+          <button id="clearBtn" class="btn btn-secondary hidden">Clear</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Activity</div>
+        <div class="stat-row">
+          <span>Clicks this session</span>
+          <strong id="clickCount">0</strong>
+        </div>
+        <div class="stat-row">
+          <span>Last click</span>
+          <strong id="lastClick">—</strong>
+        </div>
+      </section>
+
+      <details class="advanced">
+        <summary>Advanced: click cadence</summary>
+        <div class="interval-row">
+          <label>Min sec <input type="number" id="minInterval" min="1" max="600" /></label>
+          <label>Max sec <input type="number" id="maxInterval" min="1" max="600" /></label>
+        </div>
+        <p class="muted small">
+          Each click waits a random amount of time in this range (default 15–45s, averaging
+          ~2 clicks/min).
+        </p>
+      </details>
+
+      <p class="muted small footnote">
+        Keeps clicking while the window is in the background. Pauses only if this tab is
+        hidden behind another tab, the window is minimized, or you navigate off the projects
+        page.
+      </p>
+    </div>
+  </body>
+  <script src="popup.js"></script>
+</html>
